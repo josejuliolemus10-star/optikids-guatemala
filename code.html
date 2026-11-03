@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 
-<html class="light scroll-smooth" lang="es"><head>
+<html class="light" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style id="scroll-lock-init">
+  html, body {
+    scroll-behavior: auto !important;
+  }
+</style>
 <script>
-  // Garantizar que la página siempre abra desde el mero inicio (y = 0)
+  // Garantizar que la página SIEMPRE abra desde el mero inicio (y = 0)
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
   if (window.location.hash) {
     history.replaceState(null, null, window.location.pathname + window.location.search);
   }
-  window.scrollTo(0, 0);
 
+  let _userInteracted = false;
+  const _unlockScroll = () => { _userInteracted = true; };
+  window.addEventListener('wheel', _unlockScroll, { passive: true, once: true });
+  window.addEventListener('touchstart', _unlockScroll, { passive: true, once: true });
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'ArrowUp', 'Space', 'PageDown', 'PageUp'].includes(e.code)) {
+      _userInteracted = true;
+    }
+  }, { passive: true, once: true });
+
+  function _forceTop() {
+    if (!_userInteracted) {
+      window.scrollTo(0, 0);
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    }
+  }
+
+  _forceTop();
+  window.addEventListener('scroll', _forceTop, { passive: true });
   document.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    _forceTop();
+    // Interceptar clics en enlaces internos (#) para que deslicen suave pero NO ensucien la URL con hashes
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        if (!targetId) return;
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   });
+
   window.addEventListener('load', () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    _forceTop();
+    setTimeout(() => {
+      _userInteracted = true;
+      window.removeEventListener('scroll', _forceTop);
+      const style = document.getElementById('scroll-lock-init');
+      if (style) style.remove();
+      document.documentElement.classList.add('scroll-smooth');
+    }, 400);
   });
 </script>
 <title>OptiKids & Clear Vision | Especialistas en Salud Visual Infantil, Terapia Visual y Óptica en Guatemala</title>
@@ -754,7 +798,7 @@
 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full clay-pill-light border border-slate-200/90 mb-6 shadow-xs">
   <div class="flex items-center gap-1.5">
     <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+    <span class="w-2.5 h-2.5 rounded-full" style="background-color: #F5B800;"></span>
     <span class="w-2.5 h-2.5 rounded-full bg-[#78b534]"></span>
     <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
   </div>
@@ -764,7 +808,7 @@
 <div class="text-center max-w-4xl mx-auto space-y-4">
 <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-950 tracking-tight leading-[1.14]">
         Cuidamos la visión de quienes más amas. <br class="hidden sm:inline"/>
-        <span class="text-red-500">Especialistas</span> <span class="text-slate-900 font-extrabold">en</span> <span class="text-yellow-500">salud visual</span> <span class="text-[#78b534]">infantil</span> <span class="text-slate-900 font-extrabold">y</span> <span class="text-sky-500">familiar.</span>
+        <span class="text-red-500">Especialistas</span> <span class="text-slate-900 font-extrabold">en</span> <span class="text-[#F5B800]" style="color: #F5B800;">salud visual</span> <span class="text-[#78b534]">infantil</span> <span class="text-slate-900 font-extrabold">y</span> <span class="text-sky-500">familiar.</span>
       </h1>
 <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
         Diagnóstico optométrico pediátrico integral, terapia visual para mejorar el rendimiento escolar y una colección exclusiva de armazones flexibles y ultrarresistentes con recubrimiento AR y 1 año de garantía extendida.
