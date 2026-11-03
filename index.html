@@ -3,6 +3,23 @@
 <html class="light scroll-smooth" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+  // Garantizar que la página siempre abra desde el mero inicio (y = 0)
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  if (window.location.hash) {
+    history.replaceState(null, null, window.location.pathname + window.location.search);
+  }
+  window.scrollTo(0, 0);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+  window.addEventListener('load', () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+</script>
 <title>OptiKids & Clear Vision | Especialistas en Salud Visual Infantil, Terapia Visual y Óptica en Guatemala</title>
 <!-- Google Fonts: Plus Jakarta Sans & Inter -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -732,12 +749,12 @@
 </header>
 <main class="relative z-10 pt-28 md:pt-36">
 <!-- HERO SECTION: Clean Light Framer-style with Static / Subtly Floating Eyeglasses Centerpiece -->
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col items-center" id="inicio">
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col items-center scroll-mt-36" id="inicio">
 <!-- Top Pill Badge with OptiKids Brand Dots -->
 <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full clay-pill-light border border-slate-200/90 mb-6 shadow-xs">
   <div class="flex items-center gap-1.5">
     <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-    <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
     <span class="w-2.5 h-2.5 rounded-full bg-[#78b534]"></span>
     <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
   </div>
@@ -747,7 +764,7 @@
 <div class="text-center max-w-4xl mx-auto space-y-4">
 <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-950 tracking-tight leading-[1.14]">
         Cuidamos la visión de quienes más amas. <br class="hidden sm:inline"/>
-        <span class="text-red-500">Especialistas</span> <span class="text-slate-900 font-extrabold">en</span> <span class="text-amber-500">salud visual</span> <span class="text-[#78b534]">infantil</span> <span class="text-slate-900 font-extrabold">y</span> <span class="text-sky-500">familiar.</span>
+        <span class="text-red-500">Especialistas</span> <span class="text-slate-900 font-extrabold">en</span> <span class="text-yellow-500">salud visual</span> <span class="text-[#78b534]">infantil</span> <span class="text-slate-900 font-extrabold">y</span> <span class="text-sky-500">familiar.</span>
       </h1>
 <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
         Diagnóstico optométrico pediátrico integral, terapia visual para mejorar el rendimiento escolar y una colección exclusiva de armazones flexibles y ultrarresistentes con recubrimiento AR y 1 año de garantía extendida.
