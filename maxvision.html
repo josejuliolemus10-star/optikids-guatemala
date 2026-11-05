@@ -1628,7 +1628,7 @@
     <div>
       <p id="mascotBubbleText" class="text-[11px] font-extrabold text-slate-800 leading-snug">En MaxVision cuidamos tu visión con tecnología oftálmica de vanguardia y aros certificados.</p>
       <div class="mt-2 flex items-center gap-1.5">
-        <a id="mascotBubbleCtaBtn" href="https://wa.me/50257114886?text=%C2%A1Hola%20OptiKids!%20Deseo%20chatear%20con%20un%20asesor%20para%20agendar%20mi%20cita%20o%20consultar%20lentes." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation(); window.closeSpeechBubble(false);" class="px-3 py-1 bg-[#25D366] hover:bg-[#20bd5a] active:scale-95 text-white font-extrabold text-[11px] rounded-lg border-2 border-slate-900 shadow-[2px_2px_0px_#0f172a] flex items-center gap-1.5 transition-all cursor-pointer">
+        <a id="mascotBubbleCtaBtn" href="https://wa.me/50257114886?text=%C2%A1Hola%20MaxVision!%20Deseo%20chatear%20con%20un%20asesor%20para%20agendar%20mi%20cita%20o%20consultar%20lentes." target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation(); window.closeSpeechBubble(false);" class="px-3 py-1 bg-[#25D366] hover:bg-[#20bd5a] active:scale-95 text-white font-extrabold text-[11px] rounded-lg border-2 border-slate-900 shadow-[2px_2px_0px_#0f172a] flex items-center gap-1.5 transition-all cursor-pointer">
           <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.232-.039.362.274.144.346.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.6"/></svg>
           <span id="mascotBubbleCtaText">Hablar por WhatsApp</span>
         </a>
@@ -1636,7 +1636,114 @@
     </div>
   </div>
 
-  <script>
+  <!-- THE MASCOT ACTOR CONTAINER -->
+  <div id="mascotActor" class="relative flex flex-col items-center mascot-idle-breathe">
+    
+    <!-- INTERACTIVE TRIGGER FOR CLICK, DRAG & FLING -->
+    <div id="mascotInteractiveTrigger" onclick="handleOjitoClick(event)" class="pointer-events-auto cursor-pointer relative select-none flex items-end justify-center" style="width: 120px; height: 95px;" title="Ojito - Clic para abrir Asistente">
+      
+      <!-- 1. SPRITE IDLE (Quieto saludando, sonriendo) -->
+      <img id="spriteIdle" src="ojito-idle.png" alt="Ojito Quieto" class="mascot-sprite absolute bottom-0 left-1/2 -translate-x-1/2 w-[82px] h-auto object-contain pointer-events-none select-none transition-transform" />
+
+      <!-- 2. SPRITE WHISTLE (Caminando despacio, silbando con notas) -->
+      <img id="spriteWhistle" src="ojito-whistle.png" alt="Ojito Silbando" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[76px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 3. SPRITE PEEK (Espiando en la orilla detras del marco) -->
+      <img id="spritePeek" src="ojito-peek.png" alt="Ojito Espiando" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[68px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 4. SPRITE RUN (Corriendo veloz con lineas de velocidad) -->
+      <img id="spriteRun" src="ojito-run.png" alt="Ojito Corriendo" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[96px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 5. SPRITE PARACHUTE (Paracaidas a rayas rojo y blanco limpio) -->
+      <img id="spriteParachute" src="ojito-parachute.png" alt="Ojito Paracaidas" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[112px] h-auto object-contain pointer-events-none select-none" style="max-height: 155px;" />
+
+      <!-- 6. SPRITE BOUNCE (Resorte de impacto elastico y chispas) -->
+      <img id="spriteBounce" src="ojito-bounce.png" alt="Ojito Rebote" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[86px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 7. SPRITE ANGRY (Enojado brazos cruzados ceño fruncido) -->
+      <img id="spriteAngry" src="ojito-angry.png" alt="Ojito Enojado" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[76px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 8. SPRITE SAD (Triste llorando con lágrimas) -->
+      <img id="spriteSad" src="ojito-sad.png" alt="Ojito Triste" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[76px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 9. SPRITE BORED (Aburrido mano en barbilla con zzz) -->
+      <img id="spriteBored" src="ojito-bored.png" alt="Ojito Aburrido" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[76px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- 10. SPRITE CAR (En carro rojo de carreras a toda velocidad) -->
+      <img id="spriteCar" src="ojito-car.png" alt="Ojito En Carro" class="mascot-sprite hidden absolute bottom-0 left-1/2 -translate-x-1/2 w-[125px] h-auto object-contain pointer-events-none select-none" />
+
+      <!-- Comic Sweat Drops -->
+      <div id="mascotSweatDrops" class="absolute -top-3 right-0 opacity-0 transition-opacity duration-200 pointer-events-none">
+        <svg class="w-6 h-6 overflow-visible" viewBox="0 0 24 24">
+          <path d="M 12 3 C 9 8, 7 11, 7 14 C 7 17.5, 9.5 20, 12 20 C 14.5 20, 17 17.5, 17 14 C 17 11, 15 8, 12 3 Z" fill="#38bdf8" stroke="#0f172a" stroke-width="2"></path>
+        </svg>
+      </div>
+
+      <!-- Comic Dizzy Stars -->
+      <div id="mascotDizzyStars" class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 pointer-events-none orbit-stars-anim" style="width: 70px; height: 35px;">
+        <svg class="w-full h-full overflow-visible" viewBox="0 0 70 35">
+          <polygon points="12,2 14,7 19,8 15,12 16,17 12,14 8,17 9,12 5,8 10,7" fill="#facc15" stroke="#0f172a" stroke-width="1.5"></polygon>
+          <polygon points="56,3 58,8 63,9 59,13 60,18 56,15 52,18 53,13 49,9 54,8" fill="#facc15" stroke="#0f172a" stroke-width="1.5"></polygon>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ASISTENTE VIRTUAL DE OJITO -->
+<div id="avatarChatModal" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center sm:justify-start p-4 sm:p-8 bg-slate-950/40 backdrop-blur-xs transition-all duration-300 opacity-0 pointer-events-none" onclick="if(event.target === this) closeAvatarModal(event)">
+  <div class="w-full max-w-sm bg-white rounded-3xl border-2 border-slate-900 shadow-[8px_8px_0px_#0f172a] overflow-hidden transform transition-all duration-300 scale-95 p-5 text-slate-800" onclick="event.stopPropagation()">
+    
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between pb-3 border-b-2 border-slate-100 mb-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-2xl bg-sky-100 border-2 border-slate-900 flex items-center justify-center p-1 shadow-[2px_2px_0px_#0f172a]">
+          <img src="ojito-idle.png" alt="Ojito Avatar" class="w-8 h-auto object-contain select-none" />
+        </div>
+        <div>
+          <h3 class="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
+            Ojito
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          </h3>
+          <p class="text-[11px] text-slate-500 font-semibold">Asistente Oficial - MaxVision Ópticas</p>
+        </div>
+      </div>
+      <button type="button" onclick="closeAvatarModal(event, true)" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border-2 border-slate-900 text-slate-900 font-black flex items-center justify-center text-sm shadow-[2px_2px_0px_#0f172a] transition-all">✕</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="space-y-2.5">
+      <div class="bg-emerald-50/80 rounded-2xl p-3.5 border border-emerald-200">
+        <p class="text-xs text-emerald-950 font-medium leading-relaxed">
+          ¡Hola! Soy <b>Ojito</b>, tu asistente en <b>MaxVision Ópticas</b>. ¿Deseas pedir lentes del catálogo, agendar tu evaluación computarizada o cotizar con tu receta médica?
+        </p>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <a href="https://wa.me/50257114886?text=%C2%A1Hola%20MaxVision!%20Vengo%20de%20la%20p%C3%A1gina%20web%20y%20deseo%20hablar%20directamente%20con%20un%20asesor%20para%20agendar%20cita%20o%20consultar%20lentes." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 bg-[#25D366] hover:bg-[#20bd5a] active:scale-[0.98] text-white font-extrabold text-xs sm:text-sm rounded-xl border-2 border-slate-900 shadow-[3px_3px_0px_#0f172a] flex items-center justify-center gap-2 transition-all cursor-pointer">
+        <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.232-.039.362.274.144.346.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.6"/></svg>
+        <span>Chatear por WhatsApp (5711-4886)</span>
+      </a>
+
+      <button type="button" onclick="closeAvatarModal(); if(typeof window.openVisor3D==='function') window.openVisor3D();" class="w-full py-2.5 px-4 bg-sky-500 hover:bg-sky-600 active:bg-sky-700 text-white font-extrabold text-xs rounded-xl border-2 border-slate-900 shadow-[3px_3px_0px_#0f172a] flex items-center justify-center gap-2 transition-all">
+        <span>Probar Visor 3D Interactivo</span>
+      </button>
+
+      <a href="#sucursales" onclick="closeAvatarModal()" class="w-full py-2 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 flex items-center justify-center gap-1.5 transition-all">
+        <span>Ver 5 Sucursales en Mapa</span>
+      </a>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="mt-3 text-center">
+      <p class="text-[10px] text-slate-400 font-medium">MaxVision Ópticas - Tecnología Oftálmica &amp; Aros</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
 (function() {
   const container = document.getElementById('mascotRootContainer');
   const actor = document.getElementById('mascotActor');
