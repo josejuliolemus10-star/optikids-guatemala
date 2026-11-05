@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MaxVision Guatemala | Óptica de Vanguardia, Aros Exclusivos & Examen Visual</title>
+  
+  <!-- Prevención de saltos de scroll y fijación al mero inicio (y = 0) -->
+  <style id="scroll-lock-init">
+    html, body {
+      scroll-behavior: auto !important;
+    }
+  </style>
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+    let _userInteracted = false;
+    const _unlockScroll = () => { _userInteracted = true; };
+    window.addEventListener('wheel', _unlockScroll, { passive: true, once: true });
+    window.addEventListener('touchstart', _unlockScroll, { passive: true, once: true });
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowDown', 'ArrowUp', 'Space', 'PageDown', 'PageUp'].includes(e.code)) {
+        _userInteracted = true;
+      }
+    }, { passive: true, once: true });
+
+    function _forceTop() {
+      if (!_userInteracted) {
+        window.scrollTo(0, 0);
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
+    }
+    _forceTop();
+    window.addEventListener('scroll', _forceTop, { passive: true });
+    document.addEventListener('DOMContentLoaded', () => {
+      _forceTop();
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href').slice(1);
+          if (!targetId) return;
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+    window.addEventListener('load', () => {
+      _forceTop();
+      setTimeout(() => {
+        _userInteracted = true;
+        window.removeEventListener('scroll', _forceTop);
+        const style = document.getElementById('scroll-lock-init');
+        if (style) style.remove();
+        document.documentElement.classList.add('scroll-smooth');
+      }, 400);
+    });
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Three.js for 3D interactive viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Tailwind CSS v3 with Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "max-blue": "#005dff",
+            "max-blue-dark": "#0047cc",
+            "max-cyan": "#00b4d8",
+            "max-dark": "#0a1128",
+            "max-darker": "#060919"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+            headline: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+    .glass-light {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .clay-card-light {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      box-shadow: 0 10px 30px -5px rgba(0, 93, 255, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+    }
+    .clay-pill-light {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    }
+    .glass-button-light {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #cbd5e1;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-button-light:hover {
+      background: #ffffff;
+      border-color: #005dff;
+      box-shadow: 0 6px 20px rgba(0, 93, 255, 0.12);
+    }
+    .hero-gentle-float {
+      animation: floatSmooth 7s ease-in-out infinite;
+    }
+    @keyframes floatSmooth {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-9px) rotate(0.5deg); }
+    }
+    .badge-price {
+      background: linear-gradient(135deg, #005dff 0%, #00b4d8 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
+    <nav class="rounded-full glass-light border border-slate-200/90 shadow-[0_12px_36px_-10px_rgba(0,93,255,0.12),0_0_20px_rgba(0,180,216,0.06)] px-4 sm:px-6 py-2.5 flex justify-between items-center w-full">
+      <!-- Brand Logo / Identity: MaxVision -->
+      <a class="flex items-center gap-3 group active:scale-95 transition-transform duration-150 shrink-0" href="#inicio">
+        <div class="h-10 sm:h-11 px-2.5 py-1 rounded-xl bg-white border border-slate-200 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+          <img alt="MaxVision Logo" class="h-7 sm:h-8 w-auto object-contain" src="https://maxvision.com.gt/wp-content/uploads/2023/02/signature_LOGO-M-A-XVISION_0-1.jpg" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-slate-950 font-extrabold text-[18px] sm:text-[20px] tracking-tight flex items-center gap-1">
+            Max<span class="text-[#005dff]">Vision</span>
+          </span>
+          <span class="text-[10px] text-slate-500 font-semibold -mt-0.5 hidden sm:block">Óptica · Tecnología Oftálmica & Aros</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#catalogo">Catálogo de Aros</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tecnologia">Tecnología</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tratamientos">Cristales HD</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#sucursales">Sucursales (5)</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#faq">Preguntas</a>
+      </div>
+
+      <!-- Trailing Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <a class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold text-slate-800 glass-button-light hover:text-[#005dff] shadow-xs whitespace-nowrap transition-all" href="#catalogo">
+          <span class="material-symbols-outlined text-[17px] text-[#005dff]">shopping_bag</span>
+          <span>Ver Precios (Q)</span>
+        </a>
+        <a class="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold text-white bg-[#005dff] hover:bg-[#0047cc] shadow-[0_4px_18px_rgba(0,93,255,0.35)] whitespace-nowrap transition-all active:scale-95 cursor-pointer" href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Deseo%20información%20sobre%20aros,%20precios%20o%20agendar%20mi%20examen%20visual." target="_blank" rel="noopener noreferrer">
+          <span class="material-symbols-outlined text-[17px]">calendar_month</span>
+          <span>Agendar Cita</span>
+        </a>
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors" aria-label="Abrir menú">
+          <span class="material-symbols-outlined text-[20px]" id="mobileMenuIcon">menu</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenuDropdown" class="hidden lg:hidden mt-2 p-3 bg-white/95 backdrop-blur-2xl rounded-2xl border border-blue-100 shadow-xl flex flex-col gap-1 transition-all">
+      <a class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#005dff] transition-colors" href="#catalogo" onclick="toggleMobileMenu()">Catálogo & Precios de Lentes</a>
+      <a class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#005dff] transition-colors" href="#tecnologia" onclick="toggleMobileMenu()">Tecnología Oftálmica</a>
+      <a class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#005dff] transition-colors" href="#tratamientos" onclick="toggleMobileMenu()">Cristales & Filtros HD</a>
+      <a class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#005dff] transition-colors" href="#sucursales" onclick="toggleMobileMenu()">5 Sucursales & Horarios</a>
+      <a class="px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#005dff] transition-colors" href="#faq" onclick="toggleMobileMenu()">Preguntas Frecuentes</a>
+      <div class="pt-2 border-t border-slate-100 mt-1">
+        <button type="button" onclick="toggleMobileMenu(); openVisor3D();" class="w-full py-2.5 rounded-xl text-xs font-bold text-white bg-[#005dff] hover:bg-[#0047cc] transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm">
+          <span class="material-symbols-outlined text-[16px]">view_in_ar</span>
+          Probar Visor 3D Interactivo
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MODAL: VISOR 3D INTERACTIVO -->
+  <div id="visor3DModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md transition-all duration-300 opacity-0 pointer-events-none" aria-modal="true" role="dialog">
+    <div id="visor3DCard" class="relative w-full max-w-lg clay-card-light rounded-3xl p-5 sm:p-6 glass-light border border-white shadow-[0_25px_60px_-15px_rgba(0,93,255,0.35)] backdrop-blur-2xl transform transition-all duration-300 scale-95 flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-3.5 mb-3 border-b border-blue-100">
+        <div class="flex items-center gap-2.5">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#005dff] shadow-[0_0_8px_#005dff]"></span>
+          </span>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight">Visor 3D Interactivo · MaxVision</h3>
+          <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-[#005dff] border border-blue-200 hidden sm:inline-block">Giro Orbital 360°</span>
+        </div>
+        <button id="closeVisor3DBtn" type="button" onclick="closeVisor3D()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-50 text-slate-500 hover:text-rose-600 flex items-center justify-center transition-colors shadow-xs cursor-pointer" title="Cerrar visor">
+          <span class="material-symbols-outlined text-[19px]">close</span>
+        </button>
+      </div>
+
+      <!-- Interactive 3D Canvas Container -->
+      <div class="w-full h-64 sm:h-80 rounded-2xl bg-gradient-to-b from-blue-50/70 via-white to-sky-50/40 border border-blue-100 relative overflow-hidden flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <div id="threejs-container-MAXVISION" style="width:100%;height:100%"></div>
+      </div>
+      <p class="text-xs text-slate-500 text-center mt-3 font-medium">Haz clic y arrastra con el ratón o desliza con el dedo para rotar el armazón en 3D.</p>
+    </div>
+  </div>
+
+  <!-- MAIN WRAPPER -->
+  <main class="relative z-10 pt-28 md:pt-36">
+
+    <!-- HERO SECTION -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col items-center scroll-mt-36" id="inicio">
+      
+      <!-- Top Pill Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full clay-pill-light border border-slate-200/90 mb-6 shadow-xs">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#005dff] shadow-[0_0_8px_#005dff] animate-pulse"></span>
+        <span class="text-xs font-bold text-slate-800 tracking-wide">Óptica de Vanguardia · <strong class="text-[#005dff]">MaxVision</strong> Guatemala</span>
+      </div>
+
+      <!-- Hero Typography -->
+      <div class="text-center max-w-4xl mx-auto space-y-4">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-950 tracking-tight leading-[1.14]">
+          Tu visión con máxima precisión. <br class="hidden sm:inline"/>
+          <span class="text-[#005dff]">Aros oftálmicos certificados</span>, <span class="text-cyan-600">lentes de sol</span> y diagnóstico digital.
+        </h1>
+        <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+          Catálogo exclusivo de armazones en acetato ergonómico, titanio con clip solar magnético y cristales con recubrimiento antirreflejo y filtro UV400. Atención médica personalizada en 5 sucursales.
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mt-8 flex flex-wrap justify-center items-center gap-4">
+        <a class="group px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#005dff] hover:bg-[#0047cc] shadow-[0_8px_25px_rgba(0,93,255,0.3)] flex items-center gap-2.5 active:scale-95 transition-all cursor-pointer" href="#catalogo">
+          <span class="material-symbols-outlined text-[19px]">shopping_bag</span>
+          <span>Ver Catálogo con Precios</span>
+          <span class="material-symbols-outlined text-[17px] group-hover:translate-x-1.5 transition-transform duration-200">arrow_forward</span>
+        </a>
+        <button type="button" onclick="openVisor3D()" class="px-7 py-3.5 rounded-full text-sm font-semibold text-slate-800 glass-button-light hover:bg-slate-50 shadow-sm flex items-center gap-2 cursor-pointer transition-all active:scale-95">
+          <span class="material-symbols-outlined text-[19px] text-[#005dff]">view_in_ar</span>
+          <span>Explorar Lente en 3D</span>
+        </button>
+      </div>
+
+      <!-- HERO PRODUCT SHOWCASE -->
+      <div class="mt-14 w-full max-w-5xl" id="tecnologia">
+        <div class="relative rounded-3xl bg-white p-3 sm:p-6 border border-slate-200/80 shadow-[0_25px_60px_-15px_rgba(0,93,255,0.08),0_10px_20px_-5px_rgba(0,180,216,0.06)] overflow-hidden">
+          
+          <!-- Micro Device Header Bar -->
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4 px-2">
+            <div class="flex items-center gap-2.5">
+              <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 shadow-2xs">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#005dff] shadow-[0_0_8px_#005dff] animate-pulse"></span>
+                <span class="text-[11px] font-bold text-[#005dff] uppercase tracking-wider">MaxVision Calibración HD</span>
+              </div>
+              <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider hidden sm:inline">Tecnología Oftálmica Computarizada</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-blue-600">
+              <span class="material-symbols-outlined text-[16px]">tune</span>
+              <span>Refracción Digital de Precisión</span>
+            </div>
+          </div>
+
+          <!-- Central Stage: Lente Hero Estático con flotación suave -->
+          <div class="relative w-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 via-white to-blue-50/30 border border-slate-100 flex items-center justify-center min-h-[380px] sm:min-h-[460px] md:min-h-[500px]">
+            <div class="absolute inset-0 bg-[radial-gradient(#005dff_0.75px,transparent_0.75px)] [background-size:24px_24px] opacity-15 pointer-events-none"></div>
+            
+            <img alt="MaxVision Lente Oftálmico HD" class="w-full h-full object-contain max-h-[500px] select-none hero-gentle-float pointer-events-none" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo_NLNbG1SsA_A6gwjIKwH7JjWbXWURg5DFXN_Dc4gfZ-dWEnspraVpn_2SX7aHyRohCeQ9Ab8rADqDB4T08XWZ8XAs0nX3wYjSsTyZg4DqwWgmMKRob47TY7p9MlkDeC9J9fnP6sfBXnAK5jvz3jbtCY2M8Fx14PaJPzmvMwDvw2B6xQmsby2MHmiA4iHwRfTHCGmAiLXgmQa6_GCofp3NufNDSu7ViDPfgBnRCz-"/>
+
+            <!-- Optical Focus Reticle -->
+            <div class="absolute left-1/2 top-1/2 -translate-x-[55%] -translate-y-[45%] pointer-events-none flex items-center justify-center">
+              <div class="w-48 sm:w-60 md:w-72 h-48 sm:h-60 md:h-72 rounded-full border border-blue-400/40 shadow-[0_0_30px_rgba(0,93,255,0.15)] flex items-center justify-center">
+                <div class="w-36 sm:w-44 md:w-52 h-36 sm:h-44 md:h-52 rounded-full border border-dashed border-blue-500/50 animate-spin" style="animation-duration: 35s;"></div>
+                <div class="absolute w-full h-[1px] bg-blue-400/25"></div>
+                <div class="absolute h-full w-[1px] bg-blue-400/25"></div>
+              </div>
+            </div>
+
+            <!-- Floating Clay Badges -->
+            <div class="absolute top-6 left-4 sm:left-8 z-20 clay-pill-light px-4 py-2 rounded-full border border-blue-200 flex items-center gap-2 backdrop-blur-md shadow-sm">
+              <span class="material-symbols-outlined text-[#005dff] text-[18px]">verified</span>
+              <span class="text-xs font-bold text-slate-800">Filtro Blue-Defense UV400</span>
+            </div>
+            <div class="absolute bottom-6 right-4 sm:right-8 z-20 clay-pill-light px-4 py-2 rounded-full border border-cyan-200 flex items-center gap-2 backdrop-blur-md shadow-sm">
+              <span class="material-symbols-outlined text-cyan-600 text-[18px]">shutter_speed</span>
+              <span class="text-xs font-bold text-slate-800">100% Antirreflejo Multicapa AR</span>
+            </div>
+          </div>
+
+          <!-- Bottom Metric Ribbons -->
+          <div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-slate-100 text-center">
+            <div class="p-2">
+              <p class="text-2xl font-extrabold text-[#005dff] tracking-tight">99.8%</p>
+              <p class="text-xs font-medium text-slate-500 mt-0.5">Transmisión de Luz HD</p>
+            </div>
+            <div class="p-2">
+              <p class="text-2xl font-extrabold text-cyan-600 tracking-tight">0.00%</p>
+              <p class="text-xs font-medium text-slate-500 mt-0.5">Aberración Cromática</p>
+            </div>
+            <div class="p-2">
+              <p class="text-2xl font-extrabold text-blue-700 tracking-tight">100%</p>
+              <p class="text-xs font-medium text-slate-500 mt-0.5">Filtro UV400 / Luz Azul</p>
+            </div>
+            <div class="p-2">
+              <p class="text-2xl font-extrabold text-emerald-600 tracking-tight">1 Año</p>
+              <p class="text-xs font-medium text-slate-500 mt-0.5">Garantía Certificada</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- NUEVO APARTADO: VENTA DE LENTES / CATÁLOGO INTERACTIVO CON PRECIOS (Q)    -->
+    <!-- ========================================================================= -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative scroll-mt-28" id="catalogo">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-pill-light text-xs font-bold text-[#005dff] mb-3 border border-blue-200 shadow-xs">
+          <span class="material-symbols-outlined text-[17px]">local_mall</span>
+          <span>Catálogo Oficial MaxVision · Entrega en Toda Guatemala</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+          Aros oftálmicos y solares con <span class="text-[#005dff]">precios reales</span>
+        </h2>
+        <p class="text-slate-600 text-base md:text-lg mt-3 leading-relaxed">
+          Descubre nuestra colección oficial disponible en sucursales y para envío. Todos incluyen estuche rígido, paño de microfibra y garantía. Cotiza tu graduación o haz tu pedido directo a nuestro WhatsApp.
+        </p>
+      </div>
+
+      <!-- Controls: Categorías + Barra de Búsqueda -->
+      <div class="mb-10 space-y-4">
+        <!-- Filter Tabs -->
+        <div class="flex items-center justify-center flex-wrap gap-2 sm:gap-2.5" id="productFilterButtons">
+          <button type="button" onclick="filterCatalog('todos')" class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-[#005dff] text-white shadow-md shadow-blue-500/25 transition-all cursor-pointer">
+            Todos (16)
+          </button>
+          <button type="button" onclick="filterCatalog('oftalmicos')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-white hover:bg-blue-50 text-slate-700 border border-slate-200 transition-all cursor-pointer">
+            Aros Oftálmicos Like (Q520)
+          </button>
+          <button type="button" onclick="filterCatalog('clip')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-white hover:bg-blue-50 text-slate-700 border border-slate-200 transition-all cursor-pointer">
+            Titanio & Clip-On (Q850 - Q1,200)
+          </button>
+          <button type="button" onclick="filterCatalog('solar')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-white hover:bg-blue-50 text-slate-700 border border-slate-200 transition-all cursor-pointer">
+            Lentes Solares UV400 (Q750 - Q850)
+          </button>
+          <button type="button" onclick="filterCatalog('kids')" class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-white hover:bg-blue-50 text-slate-700 border border-slate-200 transition-all cursor-pointer">
+            Línea Kids Niños (Q520 - Q850)
+          </button>
+        </div>
+
+        <!-- Search Bar Input -->
+        <div class="max-w-md mx-auto relative">
+          <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
+          <input type="text" id="catalogSearchInput" oninput="searchCatalog(this.value)" placeholder="Buscar por número o estilo (ej. 5279, Solar, Clip, Kids)..." class="w-full pl-10 pr-4 py-2.5 rounded-full bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#005dff] focus:ring-2 focus:ring-blue-100 transition-all shadow-xs"/>
+        </div>
+      </div>
+
+      <!-- PRODUCTS GRID -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+
+        <!-- 1. Aro Like 5279 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="oftalmicos" data-name="aro like 5279 oftalmico acetato">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Aro Oftálmico</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/15-320x320.png" alt="Aro Like 5279" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like 5279</h3>
+            <p class="text-xs text-slate-500 mt-1">Acetato ergonómico ultraligero de alta resistencia.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%205279*%20(Q%20520.00).%20¿Tienen%20disponibilidad%20y%20asesoría%20para%20graduación?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Aro Like 5278 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="oftalmicos" data-name="aro like 5278 oftalmico">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Aro Oftálmico</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/14-320x320.png" alt="Aro Like 5278" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like 5278</h3>
+            <p class="text-xs text-slate-500 mt-1">Montura geométrica clásica, ideal para uso prolongado.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%205278*%20(Q%20520.00).%20¿Tienen%20disponibilidad%20y%20asesoría%20para%20graduación?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Aro Like 5277 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="oftalmicos" data-name="aro like 5277 oftalmico">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Aro Oftálmico</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/13-320x320.png" alt="Aro Like 5277" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like 5277</h3>
+            <p class="text-xs text-slate-500 mt-1">Línea contemporánea con bisagras reforzadas flex.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%205277*%20(Q%20520.00).%20¿Tienen%20disponibilidad%20y%20asesoría%20para%20graduación?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Aro Like Premium 5276 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="clip" data-name="aro like premium 5276 titanio clip">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-amber-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wider">Línea Premium</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/12-320x320.png" alt="Aro Like Premium 5276" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Premium 5276</h3>
+            <p class="text-xs text-slate-500 mt-1">Titanio ultra-delgado con detalles de orfebrería óptica.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 850<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Premium%205276*%20(Q%20850.00).%20¿Tienen%20disponibilidad%20y%20asesoría%20para%20graduación?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Aro Like Premium Titanio Clip 5132 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="clip" data-name="aro like premium titanio clip 5132 solar polarizado">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/40 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-800 text-[10px] font-extrabold uppercase tracking-wider">Clip Solar Incluido</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/05/15-320x320.png" alt="Aro Like Premium Titanio Clip 5132" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Titanio Clip 5132</h3>
+            <p class="text-xs text-slate-500 mt-1">2 en 1: Armazón de titanio con clip solar magnético UV400.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 1,200<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Titanio%20Clip%205132*%20(Q%201,200.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6. Aro Like Premium Titanio Clip 5133 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="clip" data-name="aro like premium titanio clip 5133 solar">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/40 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-800 text-[10px] font-extrabold uppercase tracking-wider">Clip Solar Incluido</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/05/16-320x320.png" alt="Aro Like Premium Titanio Clip 5133" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Titanio Clip 5133</h3>
+            <p class="text-xs text-slate-500 mt-1">Estructura ultrarresistente con lente polarizado adicional.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 1,200<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Titanio%20Clip%205133*%20(Q%201,200.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7. Aro Like Solar 4906 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="solar" data-name="aro like solar 4906 lente de sol polarizado">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-amber-50/20 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-extrabold uppercase tracking-wider">Lente Solar UV400</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2024/05/4906-320x320.png" alt="Aro Like Solar 4906" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Solar 4906</h3>
+            <p class="text-xs text-slate-500 mt-1">Cristal polarizado con filtro UV400 para protección solar total.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 750<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Solar%204906*%20(Q%20750.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8. Aro Like Solar 5076 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="solar" data-name="aro like solar 5076 lentes sol polarizado">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-amber-50/20 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-extrabold uppercase tracking-wider">Lente Solar UV400</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2025/11/5076-320x320.png" alt="Aro Like Solar 5076" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Solar 5076</h3>
+            <p class="text-xs text-slate-500 mt-1">Diseño urbano de alta definición con recubrimiento espejado.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 850<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Solar%205076*%20(Q%20850.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9. Aro Like Kids 4374 (con Clip Solar) -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="kids" data-name="aro like kids 4374 clip ninos infantil">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-emerald-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wider">Kids + Clip Solar</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2022/03/4374-320x320.png" alt="Aro Like Kids 4374" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Kids 4374</h3>
+            <p class="text-xs text-slate-500 mt-1">Armazón infantil irrompible con clip magnético polarizado.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 850<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Kids%204374*%20(Q%20850.00).%20¿Tienen%20disponibilidad%20para%20niños?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10. Aro Like Kids 4746 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="kids" data-name="aro like kids 4746 infantil clip solar">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-emerald-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase tracking-wider">Kids + Clip Solar</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2023/05/4746-320x320.png" alt="Aro Like Kids 4746" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Kids 4746</h3>
+            <p class="text-xs text-slate-500 mt-1">Montura de silicona flexible con clip polarizado UV400.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 850<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Kids%204746*%20(Q%20850.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 11. Aro Like Kids 3622 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="kids" data-name="aro like kids 3622 ninos flexible">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Kids Flexible</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/02/3622-320x320.png" alt="Aro Like Kids 3622" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Kids 3622</h3>
+            <p class="text-xs text-slate-500 mt-1">Silicona médica resistente a impactos y torsión 180°.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Kids%203622*%20(Q%20520.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 12. Aro Like Kids 4079 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="kids" data-name="aro like kids 4079 ninos escolar">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Kids Flexible</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2021/09/4079-320x320.png" alt="Aro Like Kids 4079" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Kids 4079</h3>
+            <p class="text-xs text-slate-500 mt-1">Diseño escolar ergonómico y liviano para niños activos.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Kids%204079*%20(Q%20520.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 13. Aro Like 5275 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="oftalmicos" data-name="aro like 5275 oftalmico acetato mate">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Aro Oftálmico</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/11-320x320.png" alt="Aro Like 5275" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like 5275</h3>
+            <p class="text-xs text-slate-500 mt-1">Acabado mate contemporáneo con soporte nasal ergonómico.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%205275*%20(Q%20520.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 14. Aro Like 5274 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="oftalmicos" data-name="aro like 5274 oftalmico formal">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/30 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-[#005dff] text-[10px] font-extrabold uppercase tracking-wider">Aro Oftálmico</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/11/10-320x320.png" alt="Aro Like 5274" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like 5274</h3>
+            <p class="text-xs text-slate-500 mt-1">Línea ejecutiva ligera, compatible con cristales progresivos.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 520<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%205274*%20(Q%20520.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 15. Aro Like Solar 5144 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="solar" data-name="aro like solar 5144 sol polarizado espejo">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-amber-50/20 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-extrabold uppercase tracking-wider">Lente Solar UV400</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2026/05/25-320x320.png" alt="Aro Like Solar 5144" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Solar 5144</h3>
+            <p class="text-xs text-slate-500 mt-1">Armazón deportivo con lente polarizado resistente al agua y polvo.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-slate-950 tracking-tight">Q 850<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Solar%205144*%20(Q%20850.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 16. Aro Like Clip 5042 -->
+        <div class="product-item clay-card-light rounded-3xl p-4 flex flex-col justify-between group hover:border-[#005dff]/60 hover:shadow-xl transition-all duration-300" data-category="clip" data-name="aro like clip 5042 solar magnetico">
+          <div>
+            <div class="relative w-full aspect-square rounded-2xl bg-gradient-to-b from-slate-50 to-blue-50/40 border border-slate-100 p-4 flex items-center justify-center overflow-hidden mb-3.5">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-800 text-[10px] font-extrabold uppercase tracking-wider">Clip Solar Incluido</span>
+              <img src="https://maxvision.com.gt/wp-content/uploads/2025/11/5042-320x320.png" alt="Aro Like Clip 5042" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 select-none"/>
+            </div>
+            <h3 class="font-extrabold text-slate-950 text-base">Aro Like Clip 5042</h3>
+            <p class="text-xs text-slate-500 mt-1">Armazón oftálmico con clip de sol polarizado magnético integrado.</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 block font-semibold uppercase">Precio</span>
+              <span class="text-xl font-black text-[#005dff] tracking-tight">Q 1,200<span class="text-xs font-bold text-slate-500">.00</span></span>
+            </div>
+            <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Me%20interesa%20el%20*Aro%20Like%20Clip%205042*%20(Q%201,200.00).%20¿Tienen%20disponibilidad?" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-full bg-[#005dff] hover:bg-[#0047cc] text-white font-bold text-xs flex items-center gap-1 shadow-sm transition-all active:scale-95 cursor-pointer">
+              <span>Pedir</span>
+              <span class="material-symbols-outlined text-[15px]">send</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Banner de Asesoría de Graduación -->
+      <div class="mt-12 rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#005dff] to-[#00b4d8] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="space-y-2 text-center md:text-left">
+          <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-extrabold uppercase tracking-wider backdrop-blur-xs">Asesoría Óptica Incluida</span>
+          <h3 class="text-2xl sm:text-3xl font-black tracking-tight">¿Deseas tus aros ya graduados con tus cristales?</h3>
+          <p class="text-white/90 text-sm max-w-xl">
+            Envía tu receta oftalmológica por WhatsApp y nuestros optometristas te cotizan cristales con Blue-Defense, Antirreflejo o Progresivos Digitales en minutos.
+          </p>
+        </div>
+        <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Deseo%20cotizar%20mis%20lentes%20con%20receta%20graduada." target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#005dff] font-extrabold text-sm shadow-md whitespace-nowrap active:scale-95 transition-all flex items-center gap-2 cursor-pointer">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          <span>Enviar mi Receta a WhatsApp</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- SECTION: CRISTALES & TRATAMIENTOS DE ALTA DEFINICIÓN (BENTO GRID) -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative scroll-mt-28" id="tratamientos">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full clay-pill-light text-xs font-bold text-[#005dff] mb-3 border border-blue-200">
+          <span class="material-symbols-outlined text-[16px]">visibility</span>
+          <span>Tratamientos Ópticos de Precisión HD</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
+          Cristales formulados para cada necesidad visual
+        </h2>
+        <p class="text-slate-600 text-base md:text-lg mt-3">
+          Combinamos tecnología digital Free-Form con nano-recubrimientos que cuidan tus ojos frente a pantallas y luz solar.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+
+        <!-- Bento 1: Filtro Azul UV400 -->
+        <div class="clay-card-light rounded-3xl p-8 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-[#005dff] shadow-sm mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-[30px]">devices</span>
+          </div>
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Protección Digital</span>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3">Escudo Blue-Defense UV400</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Bloquea selectivamente el 99.4% de la luz azul nociva emitida por computadoras, celulares y monitores, previniendo la fatiga ocular, cefaleas y alteraciones del sueño.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-[#005dff]">
+            <span class="material-symbols-outlined text-[17px]">check_circle</span>
+            <span>Sin tonalidad amarilla excesiva</span>
+          </div>
+        </div>
+
+        <!-- Bento 2: Lentes Progresivos Digitales Free-Form -->
+        <div class="clay-card-light rounded-3xl p-8 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-cyan-600 shadow-sm mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-[30px]">speed</span>
+          </div>
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Presbicia & Multifocal</span>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3">Progresivos Free-Form HD</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Transición completamente fluida y sin saltos entre visión cercana, intermedia y lejana. Calibrados con topografía facial para una adaptación inmediata en menos de 48 horas.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-cyan-700">
+            <span class="material-symbols-outlined text-[17px]">check_circle</span>
+            <span>+45% Campo visual expandido</span>
+          </div>
+        </div>
+
+        <!-- Bento 3: Lentes Fotosensibles / Fotocromáticos -->
+        <div class="clay-card-light rounded-3xl p-8 relative overflow-hidden group">
+          <div class="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shadow-sm mb-6 group-hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-[30px]">wb_sunny</span>
+          </div>
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Interiores & Exteriores</span>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3">Cristales Fotocromáticos</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Se mantienen 100% transparentes en interiores y se oscurecen de forma automática al exponerse a los rayos solares UV en exteriores. Dos pares en uno solo.
+          </p>
+          <div class="flex items-center gap-2 text-xs font-semibold text-amber-700">
+            <span class="material-symbols-outlined text-[17px]">check_circle</span>
+            <span>Activación y aclarado ultra-rápido</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: 5 SUCURSALES DINÁMICAS (GOOGLE MAPS & WAZE EN VIVO) -->
+    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative scroll-mt-28" id="sucursales">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full clay-pill-light text-xs font-bold text-[#005dff] mb-3 border border-blue-200">
+          <span class="material-symbols-outlined text-[17px]">storefront</span>
+          <span>Red Óptica MaxVision · Guatemala</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
+          Nuestras 5 Sucursales & Horarios
+        </h2>
+        <p class="text-slate-600 text-base md:text-lg mt-2">
+          Visítanos para tu examen optométrico computarizado o para probarte nuestra colección de aros en persona.
+        </p>
+      </div>
+
+      <!-- Selector de Sedes Interactivo -->
+      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-8">
+        <button type="button" onclick="cambiarSedeMax(0)" class="sede-max-pill active px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-[#005dff] bg-[#005dff] text-white shadow-md shadow-blue-500/25 cursor-pointer">
+          Majadas Once (Cd. Guatemala)
+        </button>
+        <button type="button" onclick="cambiarSedeMax(1)" class="sede-max-pill px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs cursor-pointer">
+          Carretera a El Salvador (Vilaflor)
+        </button>
+        <button type="button" onclick="cambiarSedeMax(2)" class="sede-max-pill px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs cursor-pointer">
+          Antigua Guatemala (Plaza 15)
+        </button>
+        <button type="button" onclick="cambiarSedeMax(3)" class="sede-max-pill px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs cursor-pointer">
+          Jocotenango (Plaza Jocotenango)
+        </button>
+        <button type="button" onclick="cambiarSedeMax(4)" class="sede-max-pill px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs cursor-pointer">
+          Ciudad Vieja (El Encuentro)
+        </button>
+      </div>
+
+      <!-- Tarjeta Dinámica de Ubicación -->
+      <div class="clay-card-light rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto border border-blue-100 shadow-xl">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-slate-100 gap-3">
+          <div class="flex items-center gap-3">
+            <div id="sedeMaxIconBox" class="w-11 h-11 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#005dff] shadow-xs">
+              <span class="material-symbols-outlined text-[22px]">location_on</span>
+            </div>
+            <div>
+              <h3 id="sedeMaxNombreTitulo" class="text-xl font-extrabold text-[#005dff]">Majadas Once (Cd. Guatemala)</h3>
+              <p id="sedeMaxHorario" class="text-xs text-slate-500 font-semibold mt-0.5">Lun a Sáb 10:00 - 20:00 | Dom 10:00 - 19:00</p>
+            </div>
+          </div>
+          <a id="sedeMaxWhatsAppBtn" href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Deseo%20agendar%20cita%20en%20la%20sede%20de%20Majadas%20Once." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold flex items-center gap-1.5 shadow-sm active:scale-95 transition-all">
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.232-.039.362.274.144.346.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.6"/></svg>
+            <span>Cita en esta sede</span>
+          </a>
+        </div>
+
+        <p id="sedeMaxDireccionText" class="text-xs sm:text-sm text-slate-700 font-medium my-3.5 leading-relaxed">
+          Centro Comercial Majadas Once, 1er nivel, Local 106 (frente a Barista), Zona 11, Ciudad de Guatemala.
+        </p>
+
+        <!-- Google Maps Iframe -->
+        <div class="w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-slate-200 shadow-inner relative bg-slate-100 my-4">
+          <iframe 
+            id="sedeMaxMapIframe"
+            title="Ubicación MaxVision"
+            class="w-full h-full border-0 transition-opacity duration-300"
+            src="https://maps.google.com/maps?q=Majadas+Once,+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Buttons Waze & Google Maps -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <div class="flex items-center gap-2">
+            <a id="sedeMaxMapsLink" href="https://maps.google.com/?q=Majadas+Once+Guatemala" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold flex items-center gap-1.5 shadow-2xs transition-all">
+              <span class="material-symbols-outlined text-[16px] text-red-500">map</span>
+              <span>Abrir Google Maps</span>
+            </a>
+            <a id="sedeMaxWazeLink" href="https://waze.com/ul?q=Majadas%20Once%20Guatemala&navigate=yes" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold flex items-center gap-1.5 shadow-2xs transition-all">
+              <span class="material-symbols-outlined text-[16px] text-cyan-600">navigation</span>
+              <span>Abrir en Waze</span>
+            </a>
+          </div>
+          <span class="text-xs text-slate-400 font-semibold">PBX Central: <strong class="text-slate-700">2472-7003</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PREGUNTAS FRECUENTES -->
+    <section class="py-16 md:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative scroll-mt-28" id="faq">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">Preguntas Frecuentes</h2>
+        <p class="text-slate-500 text-sm mt-2">Todo lo que necesitas saber sobre tus aros, garantías y exámenes en MaxVision.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="clay-card-light rounded-2xl p-5 border border-slate-200">
+          <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#005dff] text-[20px]">help</span>
+            ¿Los precios de los aros ya incluyen cristales graduados?
+          </h4>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed pl-7">
+            Los precios mostrados en el catálogo (ej. Q 520.00, Q 850.00, Q 1,200.00) corresponden a los armazones originales con estuche y garantía. La graduación de cristales (Blue-Defense, Antirreflejo o Progresivos) se cotiza de forma personalizada según tu receta médica vía WhatsApp.
+          </p>
+        </div>
+
+        <div class="clay-card-light rounded-2xl p-5 border border-slate-200">
+          <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#005dff] text-[20px]">help</span>
+            ¿Hacen envíos a departamentos y municipios de Guatemala?
+          </h4>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed pl-7">
+            ¡Sí! Enviamos a toda la República de Guatemala mediante paquetería segura y rápida (Guatex / Cargo Expreso). Puedes solicitar tu aro listo o graduado directo a tu domicilio o trabajo.
+          </p>
+        </div>
+
+        <div class="clay-card-light rounded-2xl p-5 border border-slate-200">
+          <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#005dff] text-[20px]">help</span>
+            ¿Qué garantía tienen los aros y cristales de MaxVision?
+          </h4>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed pl-7">
+            Todos nuestros aros cuentan con 1 año de garantía extendida contra defectos de fábrica en bisagras, soldaduras y materiales. Además, ofrecemos calibración y ajuste de terminales sin costo en cualquiera de nuestras 5 sedes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CTA FINAL AGENDAR CITA -->
+    <section class="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="clay-card-light rounded-3xl p-8 sm:p-12 relative overflow-hidden text-center bg-white border border-slate-200 shadow-xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full clay-pill-light text-xs font-bold text-[#005dff] mb-6 border border-blue-100">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>Examen Computarizado · Atención Inmediata</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 max-w-2xl mx-auto tracking-tight leading-tight">
+          ¿Listo para renovar tu salud visual y estrenar aros?
+        </h2>
+        <p class="text-slate-600 text-base max-w-xl mx-auto mt-4 mb-8 leading-relaxed">
+          Agenda tu evaluación visual con nuestros optometristas en Majadas Once, Carretera a El Salvador, Antigua Guatemala, Jocotenango o Ciudad Vieja.
+        </p>
+
+        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3" onsubmit="enviarCitaMaxVision(event)">
+          <div class="relative flex-1">
+            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">call</span>
+            <input id="telefonoCitaMax" class="w-full pl-12 pr-4 py-3.5 rounded-full bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#005dff] focus:ring-2 focus:ring-blue-200 text-sm transition-all shadow-sm" placeholder="Tu WhatsApp (ej. 5711-4886)" required="" type="tel"/>
+          </div>
+          <button class="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-bold text-white bg-[#005dff] hover:bg-[#0047cc] shadow-[0_6px_20px_rgba(0,93,255,0.3)] cursor-pointer flex items-center justify-center gap-2 active:scale-95 transition-all" type="submit">
+            <span class="material-symbols-outlined text-[18px]">chat</span>
+            <span>Agendar Cita</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-100">
+        <!-- Col 1: Brand -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2.5">
+            <img src="https://maxvision.com.gt/wp-content/uploads/2023/02/signature_LOGO-M-A-XVISION_0-1.jpg" alt="MaxVision" class="h-8 w-auto object-contain" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Óptica líder en Guatemala especializada en aros oftálmicos certificados, lentes solares polarizados y diagnóstico optométrico computarizado de alta definición.
+          </p>
+          <div class="text-xs text-slate-600 font-semibold">
+            <p>PBX: <a href="tel:+50224727003" class="text-[#005dff] hover:underline">+502 2472-7003</a></p>
+            <p class="mt-1">WhatsApp: <a href="https://wa.me/50257114886" target="_blank" class="text-emerald-600 hover:underline">+502 5711-4886</a></p>
+            <p class="mt-1">Email: <a href="mailto:info@maxvision.com.gt" class="text-slate-600 hover:underline">info@maxvision.com.gt</a></p>
+          </div>
+        </div>
+
+        <!-- Col 2: Catálogo & Aros -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Catálogo de Aros</h4>
+          <ul class="space-y-2 text-xs text-slate-600 font-medium">
+            <li><a href="#catalogo" onclick="filterCatalog('oftalmicos')" class="hover:text-[#005dff] transition-colors">Aros Oftálmicos Like (Q 520.00)</a></li>
+            <li><a href="#catalogo" onclick="filterCatalog('clip')" class="hover:text-[#005dff] transition-colors">Titanio con Clip Solar (Q 1,200.00)</a></li>
+            <li><a href="#catalogo" onclick="filterCatalog('solar')" class="hover:text-[#005dff] transition-colors">Lentes de Sol Polarizados UV400</a></li>
+            <li><a href="#catalogo" onclick="filterCatalog('kids')" class="hover:text-[#005dff] transition-colors">Línea Infantil Like Kids</a></li>
+            <li><a href="#catalogo" class="hover:text-[#005dff] transition-colors">Ver Todo el Catálogo</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Sucursales -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Nuestras 5 Sedes</h4>
+          <ul class="space-y-2 text-xs text-slate-600 font-medium">
+            <li><a href="#sucursales" onclick="cambiarSedeMax(0)" class="hover:text-[#005dff] transition-colors">Majadas Once (Zona 11)</a></li>
+            <li><a href="#sucursales" onclick="cambiarSedeMax(1)" class="hover:text-[#005dff] transition-colors">Vilaflor (Carretera a El Salvador)</a></li>
+            <li><a href="#sucursales" onclick="cambiarSedeMax(2)" class="hover:text-[#005dff] transition-colors">Plaza 15 (Antigua Guatemala)</a></li>
+            <li><a href="#sucursales" onclick="cambiarSedeMax(3)" class="hover:text-[#005dff] transition-colors">Plaza Jocotenango (Sacatepéquez)</a></li>
+            <li><a href="#sucursales" onclick="cambiarSedeMax(4)" class="hover:text-[#005dff] transition-colors">El Encuentro (Ciudad Vieja)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Horarios & Enlaces -->
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Horarios de Atención</h4>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            <strong>Lunes a Sábado:</strong> 10:00 a 20:00 hrs<br/>
+            <strong>Domingo:</strong> 10:00 a 19:00 hrs
+          </p>
+          <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Deseo%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 shadow-2xs hover:bg-emerald-100 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>WhatsApp Activo: 5711-4886</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 MaxVision Guatemala. Todos los derechos reservados.</p>
+        <div class="flex items-center gap-4">
+          <a href="#inicio" class="hover:text-[#005dff] transition-colors">Inicio</a>
+          <a href="#catalogo" class="hover:text-[#005dff] transition-colors">Catálogo</a>
+          <a href="#sucursales" class="hover:text-[#005dff] transition-colors">Sucursales</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/50257114886?text=¡Hola%20MaxVision!%20Quisiera%20consultar%20aros,%20precios%20o%20agendar%20mi%20cita." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full shadow-[0_8px_25px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-105 group cursor-pointer" title="Escríbenos a WhatsApp: 5711-4886">
+    <svg class="w-6 h-6 fill-current flex-shrink-0" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.101.005.232-.039.362.274.144.346.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-10.416c-4.409 0-8 3.591-8 8 0 1.457.396 2.824 1.085 4.004l-1.144 4.181 4.298-1.127c1.135.632 2.441.982 3.761.982 4.409 0 8-3.591 8-8s-3.591-8-8-8z"/>
+    </svg>
+    <span class="text-xs font-bold tracking-wide hidden sm:inline">WhatsApp MaxVision: 5711-4886</span>
+  </a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // 1. Mobile Menu
+    window.toggleMobileMenu = function() {
+      const menu = document.getElementById('mobileMenuDropdown');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (!menu) return;
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        if (icon) icon.textContent = 'close';
+      } else {
+        menu.classList.add('hidden');
+        if (icon) icon.textContent = 'menu';
+      }
+    };
+
+    // 2. Visor 3D Modal
+    let threeInitialized = false;
+    window.openVisor3D = function() {
+      const modal = document.getElementById('visor3DModal');
+      const card = document.getElementById('visor3DCard');
+      if (!modal) return;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      if (card) {
+        card.classList.remove('scale-95');
+        card.classList.add('scale-100');
+      }
+      document.body.style.overflow = 'hidden';
+
+      if (!threeInitialized) {
+        initThree3DScene();
+        threeInitialized = true;
+      }
+    };
+
+    window.closeVisor3D = function() {
+      const modal = document.getElementById('visor3DModal');
+      const card = document.getElementById('visor3DCard');
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      if (card) {
+        card.classList.add('scale-95');
+        card.classList.remove('scale-100');
+      }
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('visor3DModal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) window.closeVisor3D();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') window.closeVisor3D();
+      });
+    });
+
+    // 3. Three.js 3D Glasses Canvas
+    function initThree3DScene() {
+      const container = document.getElementById('threejs-container-MAXVISION');
+      if (!container) return;
+      const width = container.clientWidth || 450;
+      const height = container.clientHeight || 320;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+      camera.position.set(0, 0, 8);
+
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      container.appendChild(renderer.domElement);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
+      scene.add(ambientLight);
+
+      const dirLight1 = new THREE.DirectionalLight(0x005dff, 2.5);
+      dirLight1.position.set(5, 5, 6);
+      scene.add(dirLight1);
+
+      const dirLight2 = new THREE.DirectionalLight(0x00b4d8, 1.8);
+      dirLight2.position.set(-5, -3, 3);
+      scene.add(dirLight2);
+
+      const glassesGroup = new THREE.Group();
+      const frameMaterial = new THREE.MeshStandardMaterial({
+        color: 0x0a192f,
+        roughness: 0.2,
+        metalness: 0.7
+      });
+      const lensMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0xa5f3fc,
+        transparent: true,
+        opacity: 0.45,
+        roughness: 0.05,
+        transmission: 0.9,
+        ior: 1.5,
+        thickness: 0.2,
+        reflectivity: 0.9
+      });
+
+      const rimRadius = 1.05;
+      const rimTube = 0.08;
+      const eyeDistance = 1.35;
+
+      const leftRimGeo = new THREE.TorusGeometry(rimRadius, rimTube, 24, 64);
+      const leftRim = new THREE.Mesh(leftRimGeo, frameMaterial);
+      leftRim.position.x = -eyeDistance;
+      glassesGroup.add(leftRim);
+
+      const rightRimGeo = new THREE.TorusGeometry(rimRadius, rimTube, 24, 64);
+      const rightRim = new THREE.Mesh(rightRimGeo, frameMaterial);
+      rightRim.position.x = eyeDistance;
+      glassesGroup.add(rightRim);
+
+      const lensGeo = new THREE.CylinderGeometry(rimRadius - 0.03, rimRadius - 0.03, 0.04, 48);
+      lensGeo.rotateX(Math.PI / 2);
+
+      const leftLens = new THREE.Mesh(lensGeo, lensMaterial);
+      leftLens.position.x = -eyeDistance;
+      glassesGroup.add(leftLens);
+
+      const rightLens = new THREE.Mesh(lensGeo, lensMaterial);
+      rightLens.position.x = eyeDistance;
+      glassesGroup.add(rightLens);
+
+      const bridgeGeo = new THREE.CylinderGeometry(0.06, 0.06, eyeDistance, 16);
+      bridgeGeo.rotateZ(Math.PI / 2);
+      const bridge = new THREE.Mesh(bridgeGeo, frameMaterial);
+      bridge.position.set(0, 0.25, 0);
+      glassesGroup.add(bridge);
+
+      scene.add(glassesGroup);
+
+      // Drag to rotate logic
+      let isDragging = false;
+      let prevMouseX = 0, prevMouseY = 0;
+      container.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - prevMouseX;
+        const deltaY = e.clientY - prevMouseY;
+        glassesGroup.rotation.y += deltaX * 0.01;
+        glassesGroup.rotation.x += deltaY * 0.01;
+        prevMouseX = e.clientX;
+        prevMouseY = e.clientY;
+      });
+      window.addEventListener('pointerup', () => { isDragging = false; });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (!isDragging) {
+          glassesGroup.rotation.y += 0.006;
+          glassesGroup.rotation.x = Math.sin(Date.now() * 0.001) * 0.08;
+        }
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+
+    // 4. Catálogo: Filtrado por Categorías y Búsqueda
+    window.filterCatalog = function(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-[#005dff]', 'text-white', 'shadow-md', 'shadow-blue-500/25');
+        btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+      });
+      if (event && event.target) {
+        const t = event.target.closest('button');
+        if (t) {
+          t.classList.add('active', 'bg-[#005dff]', 'text-white', 'shadow-md', 'shadow-blue-500/25');
+          t.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        }
+      }
+
+      const items = document.querySelectorAll('.product-item');
+      items.forEach(item => {
+        if (category === 'todos' || item.dataset.category === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    };
+
+    window.searchCatalog = function(query) {
+      const q = query.trim().toLowerCase();
+      const items = document.querySelectorAll('.product-item');
+      items.forEach(item => {
+        const text = (item.dataset.name || '').toLowerCase();
+        if (!q || text.includes(q)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    };
+
+    // 5. Sedes Dinámicas de MaxVision
+    const listaSedesMax = [
+      {
+        nombre: 'Majadas Once (Cd. Guatemala)',
+        direccion: 'Centro Comercial Majadas Once, 1er nivel, Local 106 (frente a Barista), Zona 11, Ciudad de Guatemala.',
+        horario: 'Lun a Sáb 10:00 - 20:00 | Dom 10:00 - 19:00',
+        embed: 'https://maps.google.com/maps?q=Majadas+Once,+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed',
+        maps: 'https://maps.google.com/?q=Majadas+Once+Guatemala',
+        waze: 'https://waze.com/ul?q=Majadas%20Once%20Guatemala&navigate=yes',
+        waText: 'Hola MaxVision, deseo agendar cita o evaluación visual en la sede de Majadas Once (Zona 11).'
+      },
+      {
+        nombre: 'Carretera a El Salvador (Vilaflor)',
+        direccion: 'Centro Comercial Vilaflor (interior Paiz), Km 16.5 Carretera a El Salvador, Guatemala.',
+        horario: 'Lun a Dom 10:00 - 20:00',
+        embed: 'https://maps.google.com/maps?q=Vilaflor,+Carretera+a+El+Salvador,+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed',
+        maps: 'https://maps.google.com/?q=Vilaflor+Carretera+a+El+Salvador+Guatemala',
+        waze: 'https://waze.com/ul?q=Vilaflor%20Carretera%20a%20El%20Salvador&navigate=yes',
+        waText: 'Hola MaxVision, deseo agendar cita o evaluación visual en la sede de Vilaflor (Carretera a El Salvador).'
+      },
+      {
+        nombre: 'Antigua Guatemala (Plaza 15)',
+        direccion: 'Centro Comercial Plaza 15 Express (junto a Mástil+) / 7ª Avenida Norte No. 62B, Antigua Guatemala.',
+        horario: 'Lun a Sáb 9:00 - 18:00 | Dom 10:00 - 17:00',
+        embed: 'https://maps.google.com/maps?q=Plaza+15+Express,+Antigua+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed',
+        maps: 'https://maps.google.com/?q=Plaza+15+Express+Antigua+Guatemala',
+        waze: 'https://waze.com/ul?q=Plaza%2015%20Express%20Antigua%20Guatemala&navigate=yes',
+        waText: 'Hola MaxVision, deseo agendar cita o evaluación visual en la sede de Antigua Guatemala.'
+      },
+      {
+        nombre: 'Jocotenango (Plaza Jocotenango)',
+        direccion: 'Centro Comercial Plaza Jocotenango (frente a Banco Industrial), Sacatepéquez.',
+        horario: 'Lun a Sáb 9:00 - 18:00 | Dom 10:00 - 16:00',
+        embed: 'https://maps.google.com/maps?q=Plaza+Jocotenango,+Sacatepequez,+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed',
+        maps: 'https://maps.google.com/?q=Plaza+Jocotenango+Sacatepequez+Guatemala',
+        waze: 'https://waze.com/ul?q=Plaza%20Jocotenango&navigate=yes',
+        waText: 'Hola MaxVision, deseo agendar cita o evaluación visual en la sede de Jocotenango.'
+      },
+      {
+        nombre: 'Ciudad Vieja (El Encuentro)',
+        direccion: 'Centro Comercial El Encuentro, Local L13, Ciudad Vieja, Sacatepéquez.',
+        horario: 'Lun a Dom 9:00 - 19:00',
+        embed: 'https://maps.google.com/maps?q=Centro+Comercial+El+Encuentro,+Ciudad+Vieja,+Guatemala&t=&z=16&ie=UTF8&iwloc=&output=embed',
+        maps: 'https://maps.google.com/?q=El+Encuentro+Ciudad+Vieja+Guatemala',
+        waze: 'https://waze.com/ul?q=El%20Encuentro%20Ciudad%20Vieja&navigate=yes',
+        waText: 'Hola MaxVision, deseo agendar cita o evaluación visual en la sede de Ciudad Vieja.'
+      }
+    ];
+
+    window.cambiarSedeMax = function(index) {
+      const s = listaSedesMax[index];
+      if (!s) return;
+
+      document.querySelectorAll('.sede-max-pill').forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'sede-max-pill active px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-[#005dff] bg-[#005dff] text-white shadow-md shadow-blue-500/25 cursor-pointer';
+        } else {
+          btn.className = 'sede-max-pill px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-2xs cursor-pointer';
+        }
+      });
+
+      const titulo = document.getElementById('sedeMaxNombreTitulo');
+      if (titulo) titulo.textContent = s.nombre;
+
+      const horario = document.getElementById('sedeMaxHorario');
+      if (horario) horario.textContent = s.horario;
+
+      const dir = document.getElementById('sedeMaxDireccionText');
+      if (dir) dir.textContent = s.direccion;
+
+      const iframe = document.getElementById('sedeMaxMapIframe');
+      if (iframe) iframe.src = s.embed;
+
+      const mapsBtn = document.getElementById('sedeMaxMapsLink');
+      if (mapsBtn) mapsBtn.href = s.maps;
+
+      const wazeBtn = document.getElementById('sedeMaxWazeLink');
+      if (wazeBtn) wazeBtn.href = s.waze;
+
+      const waBtn = document.getElementById('sedeMaxWhatsAppBtn');
+      if (waBtn) waBtn.href = 'https://wa.me/50257114886?text=' + encodeURIComponent(s.waText);
+    };
+
+    // 6. Enviar Cita Express por WhatsApp
+    window.enviarCitaMaxVision = function(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('telefonoCitaMax');
+      const tel = input ? input.value.trim() : '';
+      const msg = encodeURIComponent(`¡Hola MaxVision! Deseo agendar una evaluación optométrica computarizada. Mi número de contacto es: ${tel}`);
+      window.open(`https://wa.me/50257114886?text=${msg}`, '_blank');
+    };
+  </script>
+</body>
+</html>
