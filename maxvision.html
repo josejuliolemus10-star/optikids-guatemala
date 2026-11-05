@@ -243,8 +243,8 @@
       animation: floatSmooth 7s ease-in-out infinite;
     }
     @keyframes floatSmooth {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-9px) rotate(0.5deg); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-9px); }
     }
     .badge-price {
       background: linear-gradient(135deg, #005dff 0%, #00b4d8 100%);
@@ -254,22 +254,28 @@
 <body class="min-h-screen bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
 
   <!-- TOP NAVIGATION BAR -->
-  <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50">
+  <header class="fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-6xl z-50">
     <nav class="rounded-full glass-light border border-slate-200/90 shadow-[0_12px_36px_-10px_rgba(0,93,255,0.12),0_0_20px_rgba(0,180,216,0.06)] px-4 sm:px-6 py-2.5 flex justify-between items-center w-full">
-      <!-- Brand Logo / Identity: MaxVision (Solo el logo oficial sin texto duplicado) -->
-      <a class="flex items-center group active:scale-95 transition-transform duration-150 shrink-0" href="#inicio" title="MaxVision Ópticas">
-        <div class="h-10 sm:h-11 px-3 py-1 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-          <img alt="MaxVision Ópticas" class="h-7 sm:h-8 w-auto object-contain" src="https://maxvision.com.gt/wp-content/uploads/2023/02/signature_LOGO-M-A-XVISION_0-1.jpg" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+      <!-- Brand Logo / Identity: MaxVision -->
+      <a class="flex items-center gap-2.5 group active:scale-95 transition-transform duration-150 shrink-0" href="#inicio" title="MaxVision Ópticas">
+        <div class="h-9 sm:h-10 w-9 sm:w-10 rounded-xl bg-white border border-slate-200/90 flex items-center justify-center p-1 shadow-xs group-hover:scale-105 transition-transform shrink-0">
+          <img alt="MaxVision Logo" class="w-full h-full object-contain select-none" src="logo_maxvision.png" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-slate-900 font-headline-sm font-extrabold text-[18px] sm:text-[20px] tracking-tight leading-tight flex items-center">
+            Max<span class="text-[#005dff]">Vision</span>
+          </span>
+          <span class="text-[10px] text-slate-500 font-semibold -mt-0.5 hidden sm:block">Óptica · Tecnología Oftálmica &amp; Aros</span>
         </div>
       </a>
 
       <!-- Desktop Nav Items -->
-      <div class="hidden lg:flex items-center gap-1 xl:gap-2">
-        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#catalogo">Catálogo de Aros</a>
-        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tecnologia">Tecnología</a>
-        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tratamientos">Cristales HD</a>
-        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#sucursales">Sucursales (5)</a>
-        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] xl:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#faq">Preguntas</a>
+      <div class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] lg:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#catalogo">Catálogo de Aros</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] lg:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tecnologia">Tecnología</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] lg:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#tratamientos">Cristales HD</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] lg:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#sucursales">Sucursales (5)</a>
+        <a class="text-slate-700 hover:text-[#005dff] font-semibold text-[13px] lg:text-[14px] whitespace-nowrap px-3 py-1.5 rounded-full hover:bg-blue-50 transition-colors" href="#faq">Preguntas</a>
       </div>
 
       <!-- Trailing Action Buttons -->
@@ -283,7 +289,7 @@
           <span>Agendar Cita</span>
         </a>
         <!-- Mobile Menu Button -->
-        <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors" aria-label="Abrir menú">
+        <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="md:hidden w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors" aria-label="Abrir menú">
           <span class="material-symbols-outlined text-[20px]" id="mobileMenuIcon">menu</span>
         </button>
       </div>
@@ -398,7 +404,7 @@
   </div>
 
   <!-- MAIN WRAPPER -->
-  <main class="relative z-10 pt-28 md:pt-36">
+  <main class="relative z-10 pt-24 md:pt-32">
 
     <!-- HERO SECTION -->
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 flex flex-col items-center scroll-mt-36" id="inicio">
@@ -1152,7 +1158,15 @@
         <!-- Col 1: Brand -->
         <div class="space-y-4">
           <div class="flex items-center gap-2.5">
-            <img src="https://maxvision.com.gt/wp-content/uploads/2023/02/signature_LOGO-M-A-XVISION_0-1.jpg" alt="MaxVision" class="h-8 w-auto object-contain" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+            <div class="h-10 w-10 rounded-2xl bg-white border border-slate-200/90 flex items-center justify-center p-1.5 shadow-2xs shrink-0">
+              <img src="logo_maxvision.png" alt="MaxVision Logo" class="w-full h-full object-contain" onerror="this.src='https://maxvision.com.gt/wp-content/uploads/2020/09/cropped-header-logo-1-192x192.png'"/>
+            </div>
+            <div class="flex flex-col justify-center">
+              <span class="text-slate-950 font-extrabold text-[18px] tracking-tight leading-tight flex items-center">
+                Max<span class="text-[#005dff]">Vision</span>
+              </span>
+              <span class="text-[10px] text-slate-500 font-semibold -mt-0.5">Óptica · Tecnología Oftálmica &amp; Aros</span>
+            </div>
           </div>
           <p class="text-xs text-slate-500 leading-relaxed">
             Óptica líder en Guatemala especializada en aros oftálmicos certificados, lentes solares polarizados y diagnóstico optométrico computarizado de alta definición.
